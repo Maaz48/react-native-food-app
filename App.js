@@ -1,6 +1,6 @@
-import { StatusBar } from "expo-status-bar";
+// import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView, StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Signin from "./Componenets/Client/Registration/Signin";
@@ -27,6 +27,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
+    // padding: ,
     flex: 1,
     width: "100%",
     height: "100%",

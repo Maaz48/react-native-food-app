@@ -5,12 +5,13 @@ import CustomDrawer from "../../UseableComponenets/CustomDrawer";
 import Signin from "../Registration/Signin";
 import Signup from "../Registration/Signup";
 import FrontScreen from "./FrontScreen";
+import Locationtrace from "../../../Locationtrace";
 const Drawer = createDrawerNavigator();
 
 const HomeScreen = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Home"
+      initialRouteName="Locationtrace"
       screenOptions={{
         headerShown: false,
       }}
@@ -18,6 +19,7 @@ const HomeScreen = () => {
       <Drawer.Screen name="Signin" component={Signin} />
       <Drawer.Screen name="Signup" component={Signup} />
       <Drawer.Screen name="Home" component={FrontScreen} />
+      <Drawer.Screen name="Locationtrace" component={Locationtrace} />
     </Drawer.Navigator>
   );
 };
