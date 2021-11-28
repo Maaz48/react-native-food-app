@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { ImageBackground, View } from "react-native";
 import { Surface, Text } from "react-native-paper";
+import ButtonComp from "./ButtonComp";
 
 const SectionComp = (props) => {
+
   const {
     container,
     imageUrl,
@@ -12,6 +14,16 @@ const SectionComp = (props) => {
     TextValue,
     innersubText,
     subText,
+    isButtonShow,
+    btnText,
+    btntextSize,
+    btntextClr,
+    btnfontWeight,
+    btnicon,
+    rowreverse,
+    mode,
+    textBodyStyle,
+    ButtonStyle
   } = props;
   return (
     <Surface style={container}>
@@ -19,6 +31,9 @@ const SectionComp = (props) => {
         <View style={Overlay}></View>
         <Text style={innerText}>{TextValue}</Text>
         <Text style={innersubText}>{subText}</Text>
+        <View style={textBodyStyle}>
+          {isButtonShow ? console.log("maaz") : <ButtonComp text={btnText} textWght={btnfontWeight} textSize={btntextSize} textClr={btntextClr} btnicon={btnicon} rowreverse={rowreverse} mode={mode} ButtonStyle={ButtonStyle} />}
+        </View>
       </ImageBackground>
     </Surface>
   );

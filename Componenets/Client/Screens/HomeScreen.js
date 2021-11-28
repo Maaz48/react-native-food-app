@@ -11,10 +11,11 @@ const Drawer = createDrawerNavigator();
 const HomeScreen = () => {
   return (
     <Drawer.Navigator
-      initialRouteName="Locationtrace"
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
       }}
+      // drawerContent={(props)=>{<CustomDrawer {...props}/>}}
     >
       <Drawer.Screen name="Signin" component={Signin} />
       <Drawer.Screen name="Signup" component={Signup} />

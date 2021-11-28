@@ -216,6 +216,7 @@ const Signup = ({ navigation }) => {
               textSize={16}
               textWght="600"
               mode="text"
+              pv={0}
             />
             <ButtonComp
               dark={autodark}
