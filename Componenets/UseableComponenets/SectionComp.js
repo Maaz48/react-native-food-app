@@ -32,7 +32,7 @@ const SectionComp = (props) => {
         <Text style={innerText}>{TextValue}</Text>
         <Text style={innersubText}>{subText}</Text>
         <View style={textBodyStyle}>
-          {isButtonShow ? console.log("maaz") : <ButtonComp text={btnText} textWght={btnfontWeight} textSize={btntextSize} textClr={btntextClr} btnicon={btnicon} rowreverse={rowreverse} mode={mode} ButtonStyle={ButtonStyle} />}
+          {isButtonShow ? console.log("Button not show") : <ButtonComp text={btnText} textWght={btnfontWeight} textSize={btntextSize} textClr={btntextClr} btnicon={btnicon} rowreverse={rowreverse} mode={mode} ButtonStyle={ButtonStyle} />}
         </View>
       </ImageBackground>
     </Surface>

@@ -1,9 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, View, SafeAreaView, ScrollView, Text } from "react-native";
 import SearchBarComp from "../../UseableComponenets/SearchBarComp";
 import HeaderComp from "../../UseableComponenets/HeaderComp";
 import SectionComp from "../../UseableComponenets/SectionComp";
+import * as Location from "expo-location";
 
 const FrontScreen = () => {
   let url = require("../../../Assets/foodheader.jpg");
@@ -11,6 +12,34 @@ const FrontScreen = () => {
   let url3 = require("../../../Assets/foodverticalHome.jpg");
   let url4 = require("../../../Assets/deliveryHome.jpg");
   let url5 = require("../../../Assets/shopHome.jpg");
+
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  console.log("check location", location);
+  // let latitude = location.latitude;
+  // let longitude = location.coord
+  // console.log(longitude,latitude);
+  // let url = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=99cfaa14a2134486a0b2cdf09191ed9d`;
+  // fetch(url)
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log("location fetch", data);
+  //   });
+
   return (
     <SafeAreaView style={styles.container}>
       <HeaderComp
@@ -108,7 +137,6 @@ const FrontScreen = () => {
               alignItems: "flex-start",
               // backgroundColor: "transparent",
               borderRadius: 20,
-
             }}
             Overlay={{
               position: "absolute",
@@ -130,7 +158,8 @@ const FrontScreen = () => {
               color: "white",
               zIndex: 9999,
               paddingHorizontal: 8,
-              paddingBottom: 5, marginVertical: 3
+              paddingBottom: 5,
+              marginVertical: 3,
             }}
             isButtonShow={false}
             btnText="Order Now"
@@ -165,7 +194,6 @@ const FrontScreen = () => {
                 alignItems: "flex-start",
                 // backgroundColor: "transparent",
                 borderRadius: 10,
-
               }}
               Overlay={{
                 position: "absolute",
@@ -187,7 +215,8 @@ const FrontScreen = () => {
                 color: "white",
                 zIndex: 9999,
                 paddingHorizontal: 8,
-                paddingBottom: 5, marginVertical: 3
+                paddingBottom: 5,
+                marginVertical: 3,
               }}
               isButtonShow={true}
               textBodyStyle={{ marginLeft: 10, marginBottom: 20 }}
@@ -213,7 +242,6 @@ const FrontScreen = () => {
                   alignItems: "flex-start",
                   // backgroundColor: "transparent",
                   borderRadius: 10,
-
                 }}
                 Overlay={{
                   position: "absolute",
@@ -235,7 +263,8 @@ const FrontScreen = () => {
                   color: "white",
                   zIndex: 9999,
                   paddingHorizontal: 8,
-                  paddingBottom: 5, marginVertical: 3
+                  paddingBottom: 5,
+                  marginVertical: 3,
                 }}
                 isButtonShow={true}
                 textBodyStyle={{ marginLeft: 10, marginBottom: 20 }}
@@ -261,7 +290,6 @@ const FrontScreen = () => {
                   alignItems: "flex-start",
                   // backgroundColor: "transparent",
                   borderRadius: 10,
-
                 }}
                 Overlay={{
                   position: "absolute",
@@ -311,7 +339,6 @@ const FrontScreen = () => {
               alignItems: "flex-start",
               // backgroundColor: "transparent",
               borderRadius: 20,
-
             }}
             Overlay={{
               position: "absolute",
@@ -333,7 +360,8 @@ const FrontScreen = () => {
               color: "white",
               zIndex: 9999,
               paddingHorizontal: 8,
-              paddingBottom: 5, marginVertical: 3
+              paddingBottom: 5,
+              marginVertical: 3,
             }}
             isButtonShow={false}
             btnText="Order Now"
@@ -346,10 +374,11 @@ const FrontScreen = () => {
             textBodyStyle={{ marginLeft: 10, marginBottom: 20 }}
             subText="Choose Your favorite food"
             ButtonStyle={{ backgroundColor: "white" }}
-
           />
         </View>
-        <View><Text style={{ fontSize: 25 }}>Your Resturants</Text></View>
+        <View>
+          <Text style={{ fontSize: 25 }}>Your Resturants</Text>
+        </View>
         <View style={styles.fourthContainer}>
           <View>
             <ScrollView horizontal={true}>
@@ -371,7 +400,6 @@ const FrontScreen = () => {
                     alignItems: "flex-start",
                     // backgroundColor: "transparent",
                     borderRadius: 20,
-
                   }}
                   Overlay={{
                     position: "absolute",
@@ -393,7 +421,8 @@ const FrontScreen = () => {
                     color: "white",
                     zIndex: 9999,
                     paddingHorizontal: 8,
-                    paddingBottom: 5, marginVertical: 3
+                    paddingBottom: 5,
+                    marginVertical: 3,
                   }}
                   isButtonShow={false}
                   btnText="Order Now"
@@ -427,7 +456,6 @@ const FrontScreen = () => {
                     alignItems: "flex-start",
                     // backgroundColor: "transparent",
                     borderRadius: 20,
-
                   }}
                   Overlay={{
                     position: "absolute",
@@ -449,7 +477,8 @@ const FrontScreen = () => {
                     color: "white",
                     zIndex: 9999,
                     paddingHorizontal: 8,
-                    paddingBottom: 5, marginVertical: 3
+                    paddingBottom: 5,
+                    marginVertical: 3,
                   }}
                   isButtonShow={false}
                   btnText="Order Now"
@@ -468,12 +497,13 @@ const FrontScreen = () => {
             </ScrollView>
           </View>
         </View>
-        <View><Text style={{ fontSize: 25 }}>Your daily deals</Text></View>
+        <View>
+          <Text style={{ fontSize: 25 }}>Your daily deals</Text>
+        </View>
 
         <View style={styles.fifthContainer}>
           <View>
             <ScrollView horizontal={true}>
-
               <View style={{ width: 180, height: 200, marginRight: 15 }}>
                 <SectionComp
                   container={{
@@ -492,7 +522,6 @@ const FrontScreen = () => {
                     alignItems: "flex-start",
                     // backgroundColor: "transparent",
                     borderRadius: 20,
-
                   }}
                   Overlay={{
                     position: "absolute",
@@ -514,7 +543,8 @@ const FrontScreen = () => {
                     color: "white",
                     zIndex: 9999,
                     paddingHorizontal: 8,
-                    paddingBottom: 5, marginVertical: 3
+                    paddingBottom: 5,
+                    marginVertical: 3,
                   }}
                   isButtonShow={true}
                   btnText="Order Now"
@@ -548,7 +578,6 @@ const FrontScreen = () => {
                     alignItems: "flex-start",
                     // backgroundColor: "transparent",
                     borderRadius: 20,
-
                   }}
                   Overlay={{
                     position: "absolute",
@@ -570,7 +599,8 @@ const FrontScreen = () => {
                     color: "white",
                     zIndex: 9999,
                     paddingHorizontal: 8,
-                    paddingBottom: 5, marginVertical: 3
+                    paddingBottom: 5,
+                    marginVertical: 3,
                   }}
                   isButtonShow={true}
                   btnText="Order Now"
@@ -604,7 +634,6 @@ const FrontScreen = () => {
                     alignItems: "flex-start",
                     // backgroundColor: "transparent",
                     borderRadius: 20,
-
                   }}
                   Overlay={{
                     position: "absolute",
@@ -626,7 +655,8 @@ const FrontScreen = () => {
                     color: "white",
                     zIndex: 9999,
                     paddingHorizontal: 8,
-                    paddingBottom: 5, marginVertical: 3
+                    paddingBottom: 5,
+                    marginVertical: 3,
                   }}
                   isButtonShow={true}
                   btnText="Order Now"
@@ -643,9 +673,7 @@ const FrontScreen = () => {
                 />
               </View>
             </ScrollView>
-
           </View>
-
         </View>
         {/* <View style={styles.sixContainer}>
 
